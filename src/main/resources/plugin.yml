@@ -1,0 +1,13 @@
+name: ItemFrameUtils
+version: ${project.version}
+main: uk.co.voxelfox.itemframeutils.ItemFrameUtils
+api-version: 1.16
+
+commands:
+  setframeinvisible:
+    usage: '/setframeinvisible [distance]'
+    description: 'Set nearby item frames to invisible'
+  setframevisible:
+    usage: '/setframevisible [distance]'
+    description: 'Set nearby item frames to visible'
+
