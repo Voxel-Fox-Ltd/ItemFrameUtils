@@ -29,6 +29,7 @@ public final class ItemFrameUtils extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equalsIgnoreCase("setframevisible")) {
+            if(!sender.hasPermission("itemframeutils.setframevisible")) return false;
             if(!(args[0].equalsIgnoreCase("true") || args[0].equalsIgnoreCase("false"))) {
                 return false;
             }
