@@ -29,9 +29,13 @@ public final class ItemFrameUtils extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equalsIgnoreCase("setframevisible")) {
-            if(!sender.hasPermission("itemframeutils.setframevisible")) return false;
+            if(!sender.hasPermission("itemframeutils.setframevisible")) {
+                sender.sendMessage("You do not have permission to run this commands.");
+                return true;
+            }
             if(!(args[0].equalsIgnoreCase("true") || args[0].equalsIgnoreCase("false"))) {
-                return false;
+                sender.sendMessage("You aren't running this command correctly - you need to say 'true' or 'false'.");
+                return true;
             }
             int distance, limit;
             try {
@@ -39,7 +43,8 @@ public final class ItemFrameUtils extends JavaPlugin {
                 assert distance <= 100;
             }
             catch(NumberFormatException e) {
-                return false;
+                sender.sendMessage("You aren't running this command correctly - you need to give a number as a distance.");
+                return true;
             }
             catch(AssertionError e) {
                 sender.sendMessage("You can only have a distance of up to 100 blocks.");
@@ -52,6 +57,7 @@ public final class ItemFrameUtils extends JavaPlugin {
                 limit = -1;
             }
             catch(NumberFormatException e) {
+                sender.sendMessage("You aren't running this command correctly - your number limit isn't valid.");
                 return false;
             }
             setItemFrameInvisible(sender, distance, args[0].equalsIgnoreCase("false"), limit);

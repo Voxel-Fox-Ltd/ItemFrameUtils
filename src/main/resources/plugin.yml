@@ -7,3 +7,12 @@ commands:
   setframevisible:
     usage: '/setframevisible <true/false> [distance] [limit?]'
     description: 'Set nearby item frames to either invisible or visible'
+
+permissions:
+  itemframeutils.*:
+    description: Gives access to all of the itemframeutils commands.
+    children:
+      itemframeutils.setframevisible: true
+  itemframeutils.setframevisible:
+    description: Access to the "/setframevisible" command.
+    default: op
